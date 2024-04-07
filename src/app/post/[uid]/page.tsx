@@ -1,11 +1,10 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { PrismicRichText, SliceZone } from "@prismicio/react";
+import { PrismicRichText } from "@prismicio/react";
 import * as prismic from "@prismicio/client";
 
 import { createClient } from "@/prismicio";
-import { components } from "@/slices";
 import { PrismicNextImage } from "@prismicio/next";
 import { ComponentMappers } from "@/utils/contentMapper";
 
@@ -53,7 +52,9 @@ export default async function Page({ params }: { params: Params }) {
       <div className="w-1/2">
         <PrismicNextImage field={blog_image} />
       </div>
-      <PrismicRichText field={blog_content} components={ComponentMappers} />
+      <div className="p-4 text-center space-y-6">
+        <PrismicRichText field={blog_content} components={ComponentMappers} />
+      </div>
     </section>
   );
 }
@@ -64,9 +65,7 @@ export async function generateStaticParams() {
   /**
    * Query all Documents from the API, except the homepage.
    */
-  const pages = await client.getAllByType("blog_post", {
-    predicates: [prismic.filter.not("my.page.uid", "home")],
-  });
+  const pages = await client.getAllByType("blog_post");
 
   /**
    * Define a path for every Document.
