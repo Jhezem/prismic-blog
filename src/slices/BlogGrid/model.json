@@ -48,6 +48,20 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "post_link": {
+          "type": "Link",
+          "config": {
+            "label": "Post Link",
+            "select": "document"
+          }
+        },
+        "link_title": {
+          "type": "Text",
+          "config": {
+            "label": "Link Title",
+            "placeholder": "Leer más"
+          }
         }
       }
     }

@@ -1,8 +1,9 @@
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicLink, SliceComponentProps } from "@prismicio/react";
 import { PrismicRichText } from "@prismicio/react";
 import { ComponentMappers } from "../../utils/contentMapper";
+import DefaultRichText from "../../../components/RichText/DefaultRichText";
 
 /**
  * Props for `BlogGrid`.
@@ -22,30 +23,45 @@ const BlogGrid = ({ slice }: BlogGridProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="text-black py-10"
+      className="text-black py-20"
     >
-      <div className="text-center mb-8">
-        <PrismicRichText field={grid_title} components={ComponentMappers} />
+      <div className="text-center my-12">
+        <DefaultRichText field={grid_title} />
       </div>
-      <div className="flex gap-x-5">
+      <div className="max-w-[80%] m-auto my-0 flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 lg:gap-x-10">
         {items.map((item, i) => (
-          <article className="w-1/3 shadow-md cursor-pointer" key={`post-${i}`}>
-            <figure>
-              <PrismicNextImage
-                field={item.post_image}
-                style={{ objectFit: "cover" }}
-                fallbackAlt=""
-              />
-            </figure>
+          <article
+            className="w-full lg:max-w-80 shadow-md cursor-pointer border border-solid border-gray-400 rounded-xl"
+            key={`post-${i}`}
+          >
             <div className="p-5">
-              <PrismicRichText
-                field={item.post_title}
-                components={ComponentMappers}
-              />
-              <PrismicRichText
-                field={item.post_description}
-                components={ComponentMappers}
-              />
+              <figure className="my-2 mx-auto">
+                <PrismicLink field={item.post_link}>
+                  <PrismicNextImage
+                    field={item.post_image}
+                    className="rounded-xl"
+                    fallbackAlt=""
+                  />
+                </PrismicLink>
+              </figure>
+
+              <div className="flex flex-col gap-y-2">
+                <PrismicRichText
+                  field={item.post_title}
+                  components={ComponentMappers}
+                />
+                <PrismicRichText
+                  field={item.post_description}
+                  components={ComponentMappers}
+                />
+
+                <PrismicLink
+                  field={item.post_link}
+                  className="underline decoration-secondary"
+                >
+                  {item.link_title ?? "Leer más"}
+                </PrismicLink>
+              </div>
             </div>
           </article>
         ))}

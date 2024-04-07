@@ -1,78 +1,98 @@
 [
-	{
-		"__TYPE__": "SharedSliceContent",
-		"variation": "default",
-		"primary": {
-			"grid_title": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Deserunt ea culpa aliquip veniam magna anim incididunt ea. Commodo tempor ex irure consequat elit. Sint labore nisi dolore ut eiusmod mollit tempor qui."
-						}
-					}
-				]
-			}
-		},
-		"items": [
-			{
-				"__TYPE__": "GroupItemContent",
-				"value": [
-					[
-						"post_title",
-						{
-							"__TYPE__": "StructuredTextContent",
-							"value": [
-								{
-									"type": "paragraph",
-									"content": {
-										"text": "Ad consequat do labore nulla esse duis nostrud commodo mollit commodo deserunt esse voluptate."
-									}
-								}
-							]
-						}
-					],
-					[
-						"post_description",
-						{
-							"__TYPE__": "StructuredTextContent",
-							"value": [
-								{
-									"type": "paragraph",
-									"content": {
-										"text": "Adipisicing tempor eiusmod fugiat quis deserunt ex. Tempor nulla non labore consectetur occaecat Lorem magna est aliqua. Nisi aliquip sit ex sunt deserunt labore ea reprehenderit sint est ullamco ea aute."
-									}
-								}
-							]
-						}
-					],
-					[
-						"post_image",
-						{
-							"__TYPE__": "ImageContent",
-							"origin": {
-								"id": "main",
-								"url": "https://images.unsplash.com/photo-1596195689404-24d8a8d1c6ea",
-								"width": 5000,
-								"height": 4613
-							},
-							"url": "https://images.unsplash.com/photo-1596195689404-24d8a8d1c6ea",
-							"width": 5000,
-							"height": 4613,
-							"edit": {
-								"zoom": 1,
-								"crop": {
-									"x": 0,
-									"y": 0
-								},
-								"background": "transparent"
-							},
-							"thumbnails": {}
-						}
-					]
-				]
-			}
-		]
-	}
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "grid_title": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Deserunt ea culpa aliquip veniam magna anim incididunt ea. Commodo tempor ex irure consequat elit. Sint labore nisi dolore ut eiusmod mollit tempor qui."
+            }
+          }
+        ]
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "post_title",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Ad consequat do labore nulla esse duis nostrud commodo mollit commodo deserunt esse voluptate."
+                  }
+                }
+              ]
+            }
+          ],
+          [
+            "post_description",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Adipisicing tempor eiusmod fugiat quis deserunt ex. Tempor nulla non labore consectetur occaecat Lorem magna est aliqua. Nisi aliquip sit ex sunt deserunt labore ea reprehenderit sint est ullamco ea aute."
+                  }
+                }
+              ]
+            }
+          ],
+          [
+            "post_image",
+            {
+              "origin": {
+                "id": "main",
+                "url": "https://images.unsplash.com/photo-1596195689404-24d8a8d1c6ea",
+                "width": 5000,
+                "height": 4613
+              },
+              "url": "https://images.unsplash.com/photo-1596195689404-24d8a8d1c6ea",
+              "width": 5000,
+              "height": 4613,
+              "edit": {
+                "zoom": 1,
+                "crop": {
+                  "x": 0,
+                  "y": 0
+                },
+                "background": "transparent"
+              },
+              "credits": null,
+              "alt": null,
+              "__TYPE__": "ImageContent",
+              "thumbnails": {}
+            }
+          ],
+          [
+            "post_link",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "DocumentLink",
+                "id": "mock_document_id"
+              }
+            }
+          ],
+          [
+            "link_title",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "spent",
+              "type": "Text"
+            }
+          ]
+        ]
+      }
+    ]
+  }
 ]
