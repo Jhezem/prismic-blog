@@ -10,4 +10,5 @@ export const ComponentMappers: JSXMapSerializer = {
       return <code>{children}</code>;
     }
   },
+  strong: ({ children }) => <strong className="font-bold">{children}</strong>,
 };
