@@ -102,7 +102,166 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = BlogGridSlice | RichTextSlice;
+/**
+ * Content for Footer documents
+ */
+interface FooterDocumentData {
+  /**
+   * Logo field in *Footer*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * Navigation field in *Footer*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.navigation
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  navigation: prismic.ContentRelationshipField<"navigation">;
+
+  /**
+   * Primary Cta field in *Footer*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.primary_cta
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  primary_cta: prismic.LinkField;
+}
+
+/**
+ * Footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<FooterDocumentData>, "footer", Lang>;
+
+/**
+ * Content for Header documents
+ */
+interface HeaderDocumentData {
+  /**
+   * Logo field in *Header*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: header.logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * Navigation field in *Header*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: header.navigation
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  navigation: prismic.ContentRelationshipField<"navigation">;
+
+  /**
+   * Primary Cta field in *Header*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: header.primary_cta
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  primary_cta: prismic.LinkField;
+
+  /**
+   * Secondary Cta field in *Header*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: header.secondary_cta
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  secondary_cta: prismic.LinkField;
+}
+
+/**
+ * Header document from Prismic
+ *
+ * - **API ID**: `header`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HeaderDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<HeaderDocumentData>, "header", Lang>;
+
+type NavigationDocumentDataSlicesSlice = NavigationItemSlice;
+
+/**
+ * Content for Navigation documents
+ */
+interface NavigationDocumentData {
+  /**
+   * Navigation Name field in *Navigation*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.navigation_name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  navigation_name: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Navigation*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<NavigationDocumentDataSlicesSlice>;
+}
+
+/**
+ * Navigation document from Prismic
+ *
+ * - **API ID**: `navigation`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavigationDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<NavigationDocumentData>,
+    "navigation",
+    Lang
+  >;
+
+type PageDocumentDataSlicesSlice =
+  | NewsLetterSlice
+  | BlogGridSlice
+  | RichTextSlice;
 
 /**
  * Content for Page documents
@@ -174,7 +333,12 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-export type AllDocumentTypes = BlogPostDocument | PageDocument;
+export type AllDocumentTypes =
+  | BlogPostDocument
+  | FooterDocument
+  | HeaderDocument
+  | NavigationDocument
+  | PageDocument;
 
 /**
  * Primary content in *BlogGrid → Primary*
@@ -224,6 +388,26 @@ export interface BlogGridSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   post_image: prismic.ImageField<never>;
+
+  /**
+   * Post Link field in *BlogGrid → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_grid.items[].post_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  post_link: prismic.ContentRelationshipField;
+
+  /**
+   * Link Title field in *BlogGrid → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Leer más
+   * - **API ID Path**: blog_grid.items[].link_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_title: prismic.KeyTextField;
 }
 
 /**
@@ -257,33 +441,159 @@ export type BlogGridSlice = prismic.SharedSlice<
 >;
 
 /**
- * Default variation for BlogPost Slice
+ * Primary content in *NavigationItem → Primary*
+ */
+export interface NavigationItemSliceDefaultPrimary {
+  /**
+   * Link Title field in *NavigationItem → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_item.primary.link_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  link_title: prismic.RichTextField;
+
+  /**
+   * Link field in *NavigationItem → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_item.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *NavigationItem → Items*
+ */
+export interface NavigationItemSliceDefaultItem {
+  /**
+   * Sub Link Title field in *NavigationItem → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_item.items[].sub_link_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  sub_link_title: prismic.RichTextField;
+
+  /**
+   * Sub Link field in *NavigationItem → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_item.items[].sub_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  sub_link: prismic.LinkField;
+
+  /**
+   * Link Type field in *NavigationItem → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: link
+   * - **API ID Path**: navigation_item.items[].link_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  link_type: prismic.SelectField<"link" | "cta", "filled">;
+}
+
+/**
+ * Default variation for NavigationItem Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type BlogPostSliceDefault = prismic.SharedSliceVariation<
+export type NavigationItemSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<NavigationItemSliceDefaultPrimary>,
+  Simplify<NavigationItemSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *NavigationItem*
+ */
+type NavigationItemSliceVariation = NavigationItemSliceDefault;
+
+/**
+ * NavigationItem Shared Slice
+ *
+ * - **API ID**: `navigation_item`
+ * - **Description**: NavigationItem
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavigationItemSlice = prismic.SharedSlice<
+  "navigation_item",
+  NavigationItemSliceVariation
+>;
+
+/**
+ * Primary content in *NewsLetter → Primary*
+ */
+export interface NewsLetterSliceDefaultPrimary {
+  /**
+   * Title field in *NewsLetter → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news_letter.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Input placeholder field in *NewsLetter → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news_letter.primary.input_placeholder
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  input_placeholder: prismic.KeyTextField;
+
+  /**
+   * Button text field in *NewsLetter → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news_letter.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for NewsLetter Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsLetterSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NewsLetterSliceDefaultPrimary>,
   never
 >;
 
 /**
- * Slice variation for *BlogPost*
+ * Slice variation for *NewsLetter*
  */
-type BlogPostSliceVariation = BlogPostSliceDefault;
+type NewsLetterSliceVariation = NewsLetterSliceDefault;
 
 /**
- * BlogPost Shared Slice
+ * NewsLetter Shared Slice
  *
- * - **API ID**: `blog_post`
- * - **Description**: BlogPost
+ * - **API ID**: `news_letter`
+ * - **Description**: NewsLetter
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type BlogPostSlice = prismic.SharedSlice<
-  "blog_post",
-  BlogPostSliceVariation
+export type NewsLetterSlice = prismic.SharedSlice<
+  "news_letter",
+  NewsLetterSliceVariation
 >;
 
 /**
@@ -299,6 +609,16 @@ export interface RichTextSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   content: prismic.RichTextField;
+
+  /**
+   * Classes field in *RichText → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rich_text.primary.classes
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  classes: prismic.KeyTextField;
 }
 
 /**
@@ -344,6 +664,13 @@ declare module "@prismicio/client" {
       BlogPostDocument,
       BlogPostDocumentData,
       BlogPostDocumentDataSlicesSlice,
+      FooterDocument,
+      FooterDocumentData,
+      HeaderDocument,
+      HeaderDocumentData,
+      NavigationDocument,
+      NavigationDocumentData,
+      NavigationDocumentDataSlicesSlice,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
@@ -353,9 +680,15 @@ declare module "@prismicio/client" {
       BlogGridSliceDefaultItem,
       BlogGridSliceVariation,
       BlogGridSliceDefault,
-      BlogPostSlice,
-      BlogPostSliceVariation,
-      BlogPostSliceDefault,
+      NavigationItemSlice,
+      NavigationItemSliceDefaultPrimary,
+      NavigationItemSliceDefaultItem,
+      NavigationItemSliceVariation,
+      NavigationItemSliceDefault,
+      NewsLetterSlice,
+      NewsLetterSliceDefaultPrimary,
+      NewsLetterSliceVariation,
+      NewsLetterSliceDefault,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,
