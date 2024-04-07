@@ -1,0 +1,41 @@
+{
+  "format": "custom",
+  "id": "footer",
+  "label": "Footer",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "Logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "navigation": {
+        "type": "Link",
+        "config": {
+          "label": "Navigation",
+          "select": "document",
+          "customtypes": ["navigation"]
+        }
+      },
+      "primary_cta": {
+        "type": "Link",
+        "config": {
+          "label": "Primary Cta",
+          "placeholder": "",
+          "select": null
+        }
+      }
+    }
+  }
+}

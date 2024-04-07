@@ -1,0 +1,51 @@
+{
+  "format": "custom",
+  "id": "header",
+  "label": "Header",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "Logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "navigation": {
+        "type": "Link",
+        "config": {
+          "label": "Navigation",
+          "select": "document",
+          "customtypes": ["navigation"]
+        }
+      },
+      "primary_cta": {
+        "type": "Link",
+        "config": {
+          "label": "Primary Cta",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null
+        }
+      },
+      "secondary_cta": {
+        "type": "Link",
+        "config": {
+          "label": "Secondary Cta",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null
+        }
+      }
+    }
+  }
+}

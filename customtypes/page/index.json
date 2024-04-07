@@ -27,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "news_letter": {
+              "type": "SharedSlice"
+            },
             "blog_grid": {
               "type": "SharedSlice"
             },
