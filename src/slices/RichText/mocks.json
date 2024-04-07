@@ -13,6 +13,11 @@
             }
           }
         ]
+      },
+      "classes": {
+        "__TYPE__": "FieldContent",
+        "value": "mice",
+        "type": "Text"
       }
     },
     "items": [

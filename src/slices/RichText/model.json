@@ -20,6 +20,13 @@
             "multi": "paragraph,preformatted,heading1,heading2,heading3,strong,em,hyperlink,embed,list-item",
             "labels": ["codespan"]
           }
+        },
+        "classes": {
+          "type": "Text",
+          "config": {
+            "label": "Classes",
+            "placeholder": ""
+          }
         }
       },
       "items": {},
