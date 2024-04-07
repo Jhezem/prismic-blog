@@ -1,0 +1,65 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "link_title": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Amet reprehenderit id id anim adipisicing aute reprehenderit cillum. Est do ipsum voluptate commodo ad quis id. Voluptate labore nulla dolor dolore commodo anim officia consectetur."
+            }
+          }
+        ]
+      },
+      "link": {
+        "__TYPE__": "LinkContent",
+        "value": {
+          "__TYPE__": "ExternalLink",
+          "url": "http://twitter.com"
+        }
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "sub_link_title",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Veniam est esse exercitation aliquip ex enim labore mollit. Dolore culpa Lorem eiusmod. Eiusmod esse voluptate in sit aute velit sunt esse id."
+                  }
+                }
+              ]
+            }
+          ],
+          [
+            "sub_link",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "ExternalLink",
+                "url": "https://prismic.io"
+              }
+            }
+          ],
+          [
+            "link_type",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "link",
+              "type": "Select"
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]
