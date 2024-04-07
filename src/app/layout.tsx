@@ -1,6 +1,8 @@
 import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio";
 import "./globals.css";
+import MainNavigation from "../../components/layout/Navigation/MainNavigation";
+import MainLayout from "../../components/layout/MainLayout";
 
 export default function RootLayout({
   children,
@@ -17,11 +19,13 @@ export default function RootLayout({
           href="https://prismic.io/favicon.ico"
         />
       </head>
-      <body className=" bg-slate-100">
-        <main className="px-10 flex flex-col items-center">
-          {children}
-          <PrismicPreview repositoryName={repositoryName} />
-        </main>
+      <body className="bg-slate-100">
+        <MainLayout>
+          <main className="flex flex-col items-center">
+            {children}
+            <PrismicPreview repositoryName={repositoryName} />
+          </main>
+        </MainLayout>
       </body>
     </html>
   );
